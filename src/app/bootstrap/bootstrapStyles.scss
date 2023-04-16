@@ -1,0 +1,9 @@
+.defaultInput {
+  @extend .form-control;
+}
+
+.defaultLabel {
+  @extend .form-label;
+}
+
+@import "../../node_modules/bootstrap/scss/bootstrap";

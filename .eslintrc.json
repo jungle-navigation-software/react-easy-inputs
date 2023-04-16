@@ -1,8 +1,21 @@
 {
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:@typescript-eslint/strict",
+    "react-app",
+    "react-app/jest",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/array-type": [2, { "default": "generic" }],
+    "@typescript-eslint/explicit-function-return-type": 2,
+    "@typescript-eslint/explicit-member-accessibility": 2,
+    "@typescript-eslint/member-ordering": 2,
+    "@typescript-eslint/parameter-properties": 2
   }
 }
