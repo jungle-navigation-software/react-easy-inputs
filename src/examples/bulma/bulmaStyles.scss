@@ -1,0 +1,17 @@
+.defaultInput {
+  @extend .input;
+}
+
+.defaultLabel {
+  @extend .label;
+}
+
+.defaultOuterWrapper {
+  @extend .field;
+}
+
+.defaultInnerWrapper {
+  @extend .control;
+}
+
+@import "../../../node_modules/bulma/bulma.sass";
