@@ -32,7 +32,7 @@ const DerivedInput: React.FC<DerivedInputProperties> = ({
         />
       </StylingWrapper>
       <ValidationMessage
-        defaultValidationMessage={validationMessageClass}
+        easyValidationMessageStyle={validationMessageClass}
         message={validationMessage}
         isDirty={dirty}
         isValid={useInput.valid}

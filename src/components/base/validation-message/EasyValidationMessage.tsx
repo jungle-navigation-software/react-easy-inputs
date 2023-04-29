@@ -1,6 +1,11 @@
-const ValidationMessage: React.FC<ValidationMessageProperties> = ({
+/**
+ * Validation Message that will show or hide depending if the input is valid.
+ */
+export const EasyValidationMessage: React.FC<
+  EasyValidationMessageProperties
+> = ({
   message,
-  defaultValidationMessage,
+  easyValidationMessageStyle = "defaultEasyValidationMessageStyle",
   isDirty,
   isValid,
 }) => {
@@ -19,17 +24,27 @@ const ValidationMessage: React.FC<ValidationMessageProperties> = ({
   };
 
   return (
-    <p className={defaultValidationMessage} style={determineStyling()}>
+    <p className={easyValidationMessageStyle} style={determineStyling()}>
       {determineMessage()}
     </p>
   );
 };
 
-interface ValidationMessageProperties {
+interface EasyValidationMessageProperties {
+  /**
+   * Our Validation Message
+   */
   message: string;
-  defaultValidationMessage: string;
+  /**
+   * Styling class for the validation message
+   */
+  easyValidationMessageStyle?: string;
+  /**
+   * Has the user interacted with the input
+   */
   isDirty: boolean;
+  /**
+   * Is the input valid
+   */
   isValid: boolean;
 }
-
-export default ValidationMessage;
