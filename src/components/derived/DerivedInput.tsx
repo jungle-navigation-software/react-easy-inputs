@@ -1,9 +1,9 @@
 import { useId, useState } from "react";
 import { IUseInput, InputType } from "../hooks/IUseInput";
-import StylingWrapper from "./StylingWrapper";
-import Label from "./Label";
-import BaseInput from "./BaseInput";
-import ValidationMessage from "./ValidationMessage";
+import StylingWrapper from "../base/styling-wrapper/StylingWrapper";
+import Label from "../base/label/Label";
+import BaseInput from "../base/base-input/BaseInput";
+import ValidationMessage from "../base/validation-message/EasyValidationMessage";
 
 const DerivedInput: React.FC<DerivedInputProperties> = ({
   useInput,
