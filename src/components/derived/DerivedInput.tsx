@@ -3,7 +3,7 @@ import { IUseInput, InputType } from "../hooks/IUseInput";
 import StylingWrapper from "../base/styling-wrapper/StylingWrapper";
 import Label from "../base/label/Label";
 import BaseInput from "../base/base-input/BaseInput";
-import EastValidationMessage from "../base/validation-message/EasyValidationMessage";
+import { EasyValidationMessage } from "../base/validation-message/EasyValidationMessage";
 
 const DerivedInput: React.FC<DerivedInputProperties> = ({
   useInput,
@@ -31,7 +31,7 @@ const DerivedInput: React.FC<DerivedInputProperties> = ({
           isDirty={dirty}
         />
       </StylingWrapper>
-      <EastValidationMessage
+      <EasyValidationMessage
         easyValidationMessageStyle={validationMessageClass}
         message={validationMessage}
         isDirty={dirty}
