@@ -1,5 +1,5 @@
-import { IUseInput, InputType } from "../hooks/IUseInput";
-import calculateValue from "../functions/CalculateValue";
+import { IUseInput, InputType } from "../../hooks/IUseInput";
+import calculateValue from "../../functions/CalculateValue";
 
 const BaseInput: React.FC<BaseInputProperties> = ({
   useInput,

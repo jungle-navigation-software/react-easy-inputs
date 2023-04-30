@@ -1,5 +1,5 @@
-import DerivedInput from "./DerivedInput";
 import { IUseInput } from "../hooks/IUseInput";
+import DerivedInput from "./DerivedInput";
 
 const TextInput: React.FC<TextInputProperties> = ({ useInput, label }) => {
   return <DerivedInput useInput={useInput} label={label} />;

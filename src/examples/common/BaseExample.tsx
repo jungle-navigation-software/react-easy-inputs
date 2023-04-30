@@ -1,4 +1,4 @@
-import TextInput from "../../components/derived-inputs/TextInput";
+import TextInput from "../../components/derived/TextInput";
 import useTextInput from "../../components/hooks/UseTextInput";
 
 const BaseExample: React.FC<BaseExampleProperties> = ({ selected }) => {
