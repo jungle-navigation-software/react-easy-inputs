@@ -13,16 +13,19 @@ const BaseInput: React.FC<BaseInputProperties> = ({
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const element = event.target as HTMLInputElement;
+
     handleUpdate(element);
   };
 
   const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
     const element = event.target as HTMLInputElement;
+
     handleUpdate(element);
   };
 
   const handleOnInput = (event: React.FormEvent<HTMLInputElement>): void => {
     const element = event.target as HTMLInputElement;
+
     handleUpdate(element);
   };
 
