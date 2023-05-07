@@ -1,7 +1,7 @@
-export interface IUseInput<InputType> {
-  state: InputType;
+export interface IUseInput<TInputType> {
+  state: TInputType;
   setState: (newState: string) => void;
-  valid: boolean;
+  isValid: boolean;
   setValid: (newValid: boolean) => void;
 }
 

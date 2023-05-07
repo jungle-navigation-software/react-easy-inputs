@@ -1,3 +1,9 @@
 {
-  "words": ["bulma", "autodocs", "tsup"]
+  "words": [
+    "autodocs",
+    "bulma",
+    "compat",
+    "sonarjs",
+    "tsup"
+  ]
 }

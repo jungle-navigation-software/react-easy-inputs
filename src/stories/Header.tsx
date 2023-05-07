@@ -3,23 +3,23 @@ import React from "react";
 import { Button } from "./Button";
 import "./header.css";
 
-type User = {
+interface User {
   name: string;
-};
+}
 
-interface HeaderProps {
+interface HeaderProperties {
   user?: User;
   onLogin: () => void;
   onLogout: () => void;
   onCreateAccount: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header: React.FC<HeaderProperties> = ({
   user,
   onLogin,
   onLogout,
   onCreateAccount,
-}: HeaderProps) => {
+}: HeaderProperties) => {
   return (
     <header>
       <div className="wrapper">

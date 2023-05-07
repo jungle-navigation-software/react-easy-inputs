@@ -17,18 +17,6 @@ const BaseInput: React.FC<BaseInputProperties> = ({
     handleUpdate(element);
   };
 
-  const handleOnFocus = (event: React.FocusEvent<HTMLInputElement>): void => {
-    const element = event.target as HTMLInputElement;
-
-    handleUpdate(element);
-  };
-
-  const handleOnInput = (event: React.FormEvent<HTMLInputElement>): void => {
-    const element = event.target as HTMLInputElement;
-
-    handleUpdate(element);
-  };
-
   const handleUpdate = (element: HTMLInputElement): void => {
     setDirty(true);
     useInput.setState(element.value);
@@ -39,7 +27,7 @@ const BaseInput: React.FC<BaseInputProperties> = ({
   const determineSuccessOrDanger = (): string => {
     if (!isDirty) {
       return "";
-    } else if (useInput.valid) {
+    } else if (useInput.isValid) {
       return successClass;
     }
     return dangerClass;
@@ -51,8 +39,8 @@ const BaseInput: React.FC<BaseInputProperties> = ({
       id={inputId}
       value={calculateValue(useInput)}
       onChange={handleOnChange}
-      onFocus={handleOnFocus}
-      onInput={handleOnInput}
+      onFocus={handleOnChange}
+      onInput={handleOnChange}
     />
   );
 };

@@ -1,17 +1,11 @@
 import { ReactNode, useState } from "react";
-import BulmaExamples from "../examples/bulma/BulmaExamples";
 import BootstrapExamples from "../examples/bootstrap/BootstrapExamples";
 
 const App: React.FC = () => {
-  const [style, setStyle] = useState<string>("bootstrap");
+  const [, setStyle] = useState<string>("bootstrap");
 
   const determineStyle = (): ReactNode => {
-    switch (style) {
-      case "bootstrap":
-        return <BootstrapExamples />;
-      case "bulma":
-        return <BootstrapExamples />;
-    }
+    return <BootstrapExamples />;
   };
 
   return (
