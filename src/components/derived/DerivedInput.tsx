@@ -15,7 +15,7 @@ const DerivedInput: React.FC<DerivedInputProperties> = ({
   validationMessageClass = "defaultValidationMessage",
 }) => {
   const inputId = useId();
-  const [dirty, setDirty] = useState<boolean>(false);
+  const [isDirty, setDirty] = useState<boolean>(false);
   const [validationMessage, setValidationMessage] = useState<string>("");
 
   return (
@@ -28,14 +28,14 @@ const DerivedInput: React.FC<DerivedInputProperties> = ({
           inputClass={inputClass}
           setDirty={setDirty}
           setValidationMessage={setValidationMessage}
-          isDirty={dirty}
+          isDirty={isDirty}
         />
       </StylingWrapper>
       <EasyValidationMessage
         easyValidationMessageStyle={validationMessageClass}
         message={validationMessage}
-        isDirty={dirty}
-        isValid={useInput.valid}
+        isDirty={isDirty}
+        isValid={useInput.isValid}
       />
     </StylingWrapper>
   );

@@ -3,19 +3,19 @@ import { IUseInput, InputType } from "./IUseInput";
 
 export default function useInput<T extends InputType>(
   defaultState: T,
-  mappingFunc: (newState: string) => T
+  mappingFunction: (newState: string) => T
 ): IUseInput<T> {
   const [state, updateState] = useState<T>(defaultState);
-  const [valid, setValid] = useState<boolean>(false);
+  const [isValid, setValid] = useState<boolean>(false);
 
   const setState = (newState: string): void => {
-    updateState(mappingFunc(newState));
+    updateState(mappingFunction(newState));
   };
 
   return {
     state,
     setState,
-    valid,
+    isValid,
     setValid,
   };
 }
