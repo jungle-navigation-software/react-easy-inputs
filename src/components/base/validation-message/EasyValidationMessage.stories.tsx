@@ -8,9 +8,8 @@ const meta: Meta<typeof EasyValidationMessage> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Primary: StoryObj<typeof EasyValidationMessage> = {
   args: {
     message: "The input is required",
     isDirty: true,
@@ -18,4 +17,4 @@ export const Primary: Story = {
   },
 };
 
-export const Secondary: Story = {};
+export const Secondary: StoryObj<typeof EasyValidationMessage> = {};

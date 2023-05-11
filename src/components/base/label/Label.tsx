@@ -1,4 +1,8 @@
-const Label: React.FC<LabelProperties> = ({ stylingClass, inputId, text }) => {
+export const Label: React.FC<LabelProperties> = ({
+  stylingClass = "defaultLabelStylingClass",
+  inputId,
+  text,
+}) => {
   return (
     <label htmlFor={inputId} className={stylingClass}>
       {text}
@@ -7,9 +11,7 @@ const Label: React.FC<LabelProperties> = ({ stylingClass, inputId, text }) => {
 };
 
 interface LabelProperties {
-  stylingClass: string;
+  stylingClass?: string;
   inputId: string;
   text: string;
 }
-
-export default Label;
