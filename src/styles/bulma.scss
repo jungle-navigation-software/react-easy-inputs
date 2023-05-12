@@ -1,0 +1,7 @@
+@charset "utf-8";
+
+.defaultSelectClass {
+  @extend .select;
+}
+
+@import "../../node_modules/bulma/bulma.sass";
