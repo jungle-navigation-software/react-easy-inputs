@@ -1,0 +1,135 @@
+name: main
+
+on: [push, pull_request]
+
+env:
+  NODE_VERSION: "18.x"
+  AZURE_WEBAPP_NAME: "asc-dev-react"
+  AZURE_WEBAPP_STORYBOOK_NAME: "asc-dev-react-storybook"
+
+jobs:
+  unit:
+    name: Lint & Unit Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Lint Application
+        run: npm run lint -- --max-warnings 0
+
+      - name: Run Unit Tests
+        run: npm run test -- --coverage
+
+      - name: Print Job Summary
+        run: |
+          echo "# Unit Tests Summary :chart_with_upwards_trend:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat ./coverage/coverage-summary.txt >> $GITHUB_STEP_SUMMARY
+          cat ./coverage/coverage.txt >> $GITHUB_STEP_SUMMARY
+
+  application:
+    name: Prepare Application
+    needs: [unit]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Package Application
+        run: npm run package
+
+      - name: Upload Application Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: application
+          path: ./build
+
+  storybook:
+    name: Prepare Storybook
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Restore Dependencies
+        run: npm ci
+
+      - name: Lint Application
+        run: npm run lint -- --max-warnings 0
+
+      - name: Create Coverage Directory
+        run: mkdir coverage
+
+      - name: Run Storybook Tests
+        run: npm run test -- --coverage
+
+      - name: Print Test Results
+        run: jq . ./coverage/.jest-test-results.json
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Upload Storybook Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: storybook
+          path: ./storybook-static
+
+  # deploy:
+  #   name: Deploy Applications
+  #   needs: [application, storybook]
+  #   runs-on: ubuntu-latest
+
+  #   strategy:
+  #     matrix:
+  #       app_type: [application, storybook]
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v3
+
+  #     - name: Download Artifact
+  #       uses: actions/download-artifact@v3
+  #       with:
+  #         name: ${{ matrix.app_type }}
+
+  #     - if: ${{ matrix.app_type == 'application' }}
+  #       name: Deploy Application
+  #       uses: azure/webapps-deploy@v2
+  #       with:
+  #         images: ""
+  #         app-name: ${{ env.AZURE_WEBAPP_NAME }}
+  #         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+
+  #     - if: ${{ matrix.app_type == 'storybook' }}
+  #       name: Deploy Storybook
+  #       uses: azure/webapps-deploy@v2
+  #       with:
+  #         images: ""
+  #         app-name: ${{ env.AZURE_WEBAPP_STORYBOOK_NAME }}
+  #         publish-profile: ${{ secrets.AZURE_WEBAPP_STORYBOOK_PUBLISH_PROFILE }}

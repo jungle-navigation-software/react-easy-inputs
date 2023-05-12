@@ -3,7 +3,7 @@ import { Label } from "./Label";
 import "../../../../node_modules/bulma/bulma.sass";
 
 const meta: Meta<typeof Label> = {
-  title: "Bulma/Label",
+  title: "Bulma/Base/Label",
   component: Label,
 };
 

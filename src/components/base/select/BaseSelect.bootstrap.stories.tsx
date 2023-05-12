@@ -1,13 +1,13 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BaseSelect } from "./BaseSelect";
-import "../../../styles/bulma.scss";
+import "../../../styles/bootstrap.scss";
 import BaseSelectWrapper from "./BaseSelectWrapper";
 
 const meta: Meta<typeof BaseSelect> = {
-  title: "Bulma/Base/Select",
+  title: "Bootstrap/Base/Select",
   component: BaseSelect,
   tags: ["autodocs"],
-  render: (properties) => <BaseSelectWrapper {...properties} />,
+  render: () => <BaseSelectWrapper />,
 };
 
 export default meta;

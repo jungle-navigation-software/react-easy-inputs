@@ -5,4 +5,4 @@ export interface IUseInput<TInputType> {
   setValid: (newValid: boolean) => void;
 }
 
-export type InputType = string | number | Date;
+export type InputType = string | number | Date | Array<string>;

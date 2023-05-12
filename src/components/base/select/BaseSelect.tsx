@@ -16,9 +16,24 @@ export const BaseSelect: React.FC<BaseSelectProperties> = ({
     event: React.ChangeEvent<HTMLSelectElement>
   ): void => {
     useInput.setState(event.target.value);
+
+    if (isMultiple) {
+      const newState: Array<string> = [];
+
+      for (const option of event.target.options) {
+        if (option.selected) {
+          newState.push(option.value);
+        }
+      }
+
+      useInput.setState(newState.toString());
+    }
   };
 
-  const toValue = (): string => {
+  const toValue = (): string | Array<string> => {
+    if (isMultiple) {
+      return useInput.state as Array<string>;
+    }
     return useInput.state.toString();
   };
 

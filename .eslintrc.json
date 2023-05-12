@@ -92,7 +92,8 @@
     {
       "files": ["**/*.stories.*"],
       "rules": {
-        "import/no-anonymous-default-export": 0
+        "import/no-anonymous-default-export": 0,
+        "react/jsx-props-no-spreading": 0
       }
     }
   ]
