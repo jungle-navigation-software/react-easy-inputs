@@ -5,7 +5,7 @@ import BaseInput from "./BaseInput";
 const TextInputWrapper: React.FC = () => {
   const input = useTextInput();
   const [isDirty, setDirty] = useState<boolean>(false);
-  const [message, setMessage] = useState<string>("");
+  const [, setMessage] = useState<string>("");
   const id = useId();
 
   return (
