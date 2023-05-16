@@ -1,15 +1,19 @@
 import { IUseInput, InputType } from "../../hooks/IUseInput";
 import calculateValue from "../../functions/CalculateValue";
 
-const BaseInput: React.FC<BaseInputProperties> = ({
+/**
+ * BaseInput forms the foundation for a text, numeric, or date based input.
+ */
+export const BaseInput: React.FC<BaseInputProperties> = ({
   useInput,
+  type,
   setDirty,
   setValidationMessage,
   inputId,
-  inputClass = "defaultInput",
+  inputClass = "defaultInputClass",
   isDirty,
-  successClass = "defaultSuccess",
-  dangerClass = "defaultDanger",
+  successClass = "defaultSuccessClass",
+  dangerClass = "defaultDangerClass",
 }) => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const element = event.target as HTMLInputElement;
@@ -41,12 +45,25 @@ const BaseInput: React.FC<BaseInputProperties> = ({
       onChange={handleOnChange}
       onFocus={handleOnChange}
       onInput={handleOnChange}
+      type={type}
     />
   );
 };
 
 interface BaseInputProperties {
+  /**
+   * A useInput hook that will pass data up and down.
+   */
   useInput: IUseInput<InputType>;
+
+  /**
+   * The type of the input. (I.E. text, number, date)
+   */
+  type: string;
+
+  /**
+   * A callback to update the isDirty value.
+   */
   setDirty: (isDirty: boolean) => void;
   setValidationMessage: (validationMessage: string) => void;
   inputClass?: string;
@@ -55,5 +72,3 @@ interface BaseInputProperties {
   successClass?: string;
   dangerClass?: string;
 }
-
-export default BaseInput;

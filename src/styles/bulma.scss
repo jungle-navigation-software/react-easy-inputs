@@ -4,4 +4,8 @@
   @extend .select;
 }
 
+.defaultInputClass {
+  @extend .input;
+}
+
 @import "../../node_modules/bulma/bulma.sass";

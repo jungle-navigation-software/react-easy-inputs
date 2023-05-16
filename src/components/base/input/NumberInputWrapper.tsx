@@ -1,9 +1,9 @@
-import { useId, useState } from "react";
-import useTextInput from "../../hooks/UseTextInput";
+import { useState, useId } from "react";
+import useNumberInput from "../../hooks/UseNumberInput";
 import { BaseInput } from "./BaseInput";
 
-const TextInputWrapper: React.FC<TextInputWrapperProperties> = ({ type }) => {
-  const input = useTextInput();
+const NumberInputWrapper: React.FC = () => {
+  const input = useNumberInput();
   const [isDirty, setDirty] = useState<boolean>(false);
   const [, setMessage] = useState<string>("");
   const id = useId();
@@ -15,13 +15,9 @@ const TextInputWrapper: React.FC<TextInputWrapperProperties> = ({ type }) => {
       setDirty={setDirty}
       setValidationMessage={setMessage}
       inputId={id}
-      type={type}
+      type="number"
     />
   );
 };
 
-interface TextInputWrapperProperties {
-  type: string;
-}
-
-export default TextInputWrapper;
+export default NumberInputWrapper;

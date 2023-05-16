@@ -1,11 +1,10 @@
-import { IUseInput, InputType } from "../../hooks/IUseInput";
-import ISelectOption from "./ISelectOption";
+import { IUseInput, InputType } from "../../../hooks/IUseInput";
 
 /**
  * BaseSelect that forms the foundation for a Select input.
  */
 export const BaseSelect: React.FC<BaseSelectProperties> = ({
-  options,
+  toOptions,
   useInput,
   defaultSelectClass = "defaultSelectClass",
   defaultOptionClass = "defaultOptionClass",
@@ -52,17 +51,7 @@ export const BaseSelect: React.FC<BaseSelectProperties> = ({
       multiple={isMultiple}
       size={determineSize()}
     >
-      {options.map((option): JSX.Element => {
-        return (
-          <option
-            key={option.value}
-            value={option.value}
-            className={defaultOptionClass}
-          >
-            {option.text}
-          </option>
-        );
-      })}
+      {toOptions()}
     </select>
   );
 };
@@ -76,7 +65,7 @@ interface BaseSelectProperties {
   /**
    * An array of ISelectOption that contains value's and text labels for each option.
    */
-  options: Array<ISelectOption>;
+  toOptions: () => JSX.Element;
 
   /**
    * The styling class for the select tag.
