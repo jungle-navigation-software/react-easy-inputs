@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:watch": "npm test -- --coverage --watchAll",
     "lint": "npx eslint ./src --fix",
     "package": "npx tsup src/components/index.ts",
     "storybook": "storybook dev -p 6006",

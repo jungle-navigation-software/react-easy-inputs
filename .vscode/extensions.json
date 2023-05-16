@@ -8,6 +8,7 @@
     "esbenp.prettier-vscode",
     "editorconfig.editorconfig",
     "syler.sass-indented",
-    "github.vscode-github-actions"
+    "github.vscode-github-actions",
+    "unifiedjs.vscode-mdx"
   ]
 }
