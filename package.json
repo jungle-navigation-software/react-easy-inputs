@@ -92,7 +92,8 @@
       "index.tsx",
       "reportWebVitals.ts",
       ".stories.*",
-      ".spec.*"
+      ".spec.*",
+      "*Wrapper.*"
     ]
   }
 }

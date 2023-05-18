@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BaseSelect } from "./BaseSelect";
-import "../../../styles/bootstrap.scss";
 import BaseSelectWrapper from "./BaseSelectWrapper";
+import "../../../../styles/bootstrap.scss";
 
 const meta: Meta<typeof BaseSelect> = {
   title: "Bootstrap/Base/Select",

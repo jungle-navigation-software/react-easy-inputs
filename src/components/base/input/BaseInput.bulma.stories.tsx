@@ -14,7 +14,7 @@ const meta: Meta<typeof BaseInput> = {
 export default meta;
 
 export const TextInput: StoryObj<typeof BaseInput> = {
-  render: () => <TextInputWrapper type="text" />,
+  render: () => <TextInputWrapper type="text" required />,
 };
 
 export const NumberInput: StoryObj<typeof BaseInput> = {

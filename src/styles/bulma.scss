@@ -8,4 +8,12 @@
   @extend .input;
 }
 
+.defaultDangerClass {
+  @extend .is-danger;
+}
+
+.defaultSuccessClass {
+  @extend .is-success;
+}
+
 @import "../../node_modules/bulma/bulma.sass";

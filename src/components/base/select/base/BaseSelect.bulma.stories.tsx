@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { BaseSelect } from "./BaseSelect";
-import "../../../styles/bulma.scss";
+import "../../../../styles/bulma.scss";
 import BaseSelectWrapper from "./BaseSelectWrapper";
 
 const meta: Meta<typeof BaseSelect> = {

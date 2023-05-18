@@ -14,14 +14,10 @@ export const BaseInput: React.FC<BaseInputProperties> = ({
   isDirty,
   successClass = "defaultSuccessClass",
   dangerClass = "defaultDangerClass",
+  required,
 }) => {
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleUpdate = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const element = event.target as HTMLInputElement;
-
-    handleUpdate(element);
-  };
-
-  const handleUpdate = (element: HTMLInputElement): void => {
     setDirty(true);
     useInput.setState(element.value);
     useInput.setValid(element.validity.valid);
@@ -42,10 +38,11 @@ export const BaseInput: React.FC<BaseInputProperties> = ({
       className={`${inputClass} ${determineSuccessOrDanger()}`}
       id={inputId}
       value={calculateValue(useInput)}
-      onChange={handleOnChange}
-      onFocus={handleOnChange}
-      onInput={handleOnChange}
+      onChange={handleUpdate}
+      onFocus={handleUpdate}
+      onInput={handleUpdate}
       type={type}
+      required={required}
     />
   );
 };
@@ -65,10 +62,39 @@ interface BaseInputProperties {
    * A callback to update the isDirty value.
    */
   setDirty: (isDirty: boolean) => void;
+
+  /**
+   * A callback to update the validation error message if present.
+   */
   setValidationMessage: (validationMessage: string) => void;
+
+  /**
+   * The styling class for the input element.
+   */
   inputClass?: string;
+
+  /**
+   * The id that will be associated with the input and label.
+   */
   inputId: string;
+
+  /**
+   * A variable to denote if the input has been touched or focused.
+   */
   isDirty: boolean;
+
+  /**
+   * The styling class for input if it passes validation.
+   */
   successClass?: string;
+
+  /**
+   * The styling class for the input if it fails validation.
+   */
   dangerClass?: string;
+
+  /**
+   * States weather the input should have a value or not.
+   */
+  required?: boolean;
 }
